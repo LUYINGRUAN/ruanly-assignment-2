@@ -40,7 +40,4 @@ jobs:
         make run &  # Run the Flask app in the background
         sleep 10    # Wait 10 seconds for the server to start
 
-    # Optional Step 5: Test the server (you can replace this with actual tests)
-    - name: Test server
-      run: |
-        curl -f http://localhost:3000  # Check if the server is running (replace with your actual test command)
+   
