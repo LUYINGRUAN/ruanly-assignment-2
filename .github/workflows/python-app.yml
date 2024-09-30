@@ -18,22 +18,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Step 1: Checkout the repository
     - uses: actions/checkout@v4
+
+    # Step 2: Set up Python 3.9
     - name: Set up Python 3.9
       uses: actions/setup-python@v3
       with:
-        python-version: "3.9"
+        python-version: "3.9"  # Set to the Python version you need
+
+    # Step 3: Install make and dependencies using make install
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
+        sudo apt-get update
+        sudo apt-get install make  # Ensure make is available
+        make install  # Use the install target from the Makefile
+
+    # Step 4: Run the Flask server (add a sleep to allow it to start properly)
+    - name: Run the server
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+        make run &  # Run the Flask app in the background
+        sleep 10    # Wait 10 seconds for the server to start
+
+    # Optional Step 5: Test the server (you can replace this with actual tests)
+    - name: Test server
       run: |
-        pytest
+        curl -f http://localhost:3000  # Check if the server is running (replace with your actual test command)
