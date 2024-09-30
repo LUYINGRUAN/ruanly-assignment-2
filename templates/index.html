@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://d3js.org/d3.v6.js"></script>
+
+</head>
+<body>
+    <h1>KMeans Clustering Visualization</h1>
+    
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="n_clust">Number of clusters:</label>
+        <input type="number" id="n_clust" name="n_clust" value="" min="2" required><br><br>
+
+        <label for="init_m">Initialization Method:</label>
+        <select id="init_m" name="init_m" required>
+            <option value="Random">Random</option>
+            <option value="Farthest First">Farthest First</option>
+            <option value="KMeans++">KMeans++</option>
+            <option value="Manual">Manual</option>
+        </select>
+
+        <input type="hidden" id="cx1" value="" />
+        <input type="hidden" id="cx2" value="" />
+        <br><br><br>
+        <button type="submit" id="stepk" name="action" value="Step Through KMeans">Step Through KMeans</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" id="stepall" name="action" value="Run to Convergence">Run to Convergence</button>
+        <br><br><br>
+        <button type="submit" id="gendata" name="action" value="Generate New Dataset">Generate New Dataset</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" id="reset" name="action" value="Reset Algorithm">Reset Algorithm</button>
+    </form>
+
+    <h2>KMeans Clustering Animation</h2>
+        <div class="visualization" id="viz">
+          <div id="scatterChart"></div>
+        </div>  
+    <script src="/static/scripts.js"></script>
+</body>
+</html>

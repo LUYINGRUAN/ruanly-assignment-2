@@ -1,0 +1,1 @@
+In this assignment, we will develop an interactive web application that demonstrates the KMeans clustering algorithm using various initialization methods. 
