@@ -91,14 +91,9 @@ def getcentroids():
 
 @app.route("/reset", methods=['POST'])
 def reset():
-    global arr
-    global oldarr
     global centroids
     global chex
-    oldarr = generateData()
     centroids = np.array([])
-    colors = np.full(100, 1)
-    arr = np.c_[oldarr, colors]
     chex = np.array([])
     return render_template('index.html')
 
